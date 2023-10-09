@@ -25,21 +25,29 @@ struct SpeakerPage: View {
             }
             .toggleStyle(SwitchToggleStyle(tint: .green))
             
-            Text("Bass")
-           
+            HStack(){
+                Text("Bass")
+                Spacer()
+                Text("\(Int(bassVolume))")
+            }
             Slider(value: $bassVolume, in: -15...15, step: 1)
-            Text("Mid")
+
+            HStack(){
+                Text("Mid")
+                Spacer()
+                Text("\(Int(midVolume))")
+            }
             Slider(value: $midVolume, in: -15...15, step: 1)
             
-            Text("Treble")
+            HStack(){
+                Text("Treble")
+                Spacer()
+                Text("\(Int(trebleVolume))")
+            }
             Slider(value: $trebleVolume, in: -15...15, step: 1)
             
             Spacer()
         }
         .padding()
     }
-}
-
-#Preview {
-    SpeakerPage(speakerName: "Left")
 }

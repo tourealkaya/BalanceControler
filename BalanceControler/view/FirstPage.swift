@@ -11,20 +11,33 @@ struct FirstPage: View {
     @State private var balance: Double = 0
     @State private var isLeftMuted = false
     @State private var isRightMuted = false
-
+    
+    let repository = Sliderrepository.shaared
+    let sliders : [Sliders]
+    
+    init(){
+        self.sliders = repository.sliders
+    }
+    
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
-                Text("Settings")
-                    .font(.largeTitle)
-                Spacer()
+
                 VStack(alignment: .leading) {
-                    Text("Volume")
+                    HStack(){
+                        Text("Volume")
+                        Spacer()
+                        Text("\(Int(volume))")
+                    }
                     Slider(value: $volume, in: 0...40, step: 1)
                 }
 
                 VStack(alignment: .leading) {
-                    Text("Balance")
+                    HStack(){
+                        Text("Balance")
+                        Spacer()
+                        Text("\(Int(balance))")
+                    }
                     Slider(value: $balance, in: -4...4, step: 1)
                 }
                 Spacer()
@@ -75,23 +88,25 @@ struct FirstPage: View {
                     .foregroundColor(.white)
                     .cornerRadius(40)
                 }
-                Spacer(minLength: 0)
             }
             .padding()
-            .navigationBarTitle("", displayMode: .inline)
+            .navigationBarTitle("Settings", displayMode: .automatic)
         }
-        .onChange(of: isLeftMuted) {oldvalue, newValue in
+        .onChange(of: isLeftMuted) { newValue in
             if newValue {
                 balance = -4
             } else {
                 balance = isRightMuted ? 4 : 0
             }
         }
-        .onChange(of: isRightMuted) { oldvalue,newValue in
+        .onChange(of: isRightMuted) { newValue in
             if newValue {
                 balance = 4
-            } else {
+            } else if (!newValue) {
                 balance = isLeftMuted ? -4 : 0
+            }
+            else{
+                balance = isRightMuted ? 4 : 0
             }
         }
     }
