@@ -1,5 +1,5 @@
 //
-//  SliderView.swift
+//  ButtonMixView.swift
 //  BalanceControler
 //
 //  Created by TOURE Alkaya Sidi on 10/10/2023.
