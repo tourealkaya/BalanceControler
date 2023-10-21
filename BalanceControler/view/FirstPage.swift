@@ -9,38 +9,17 @@ import SwiftUI
 struct FirstPage: View {
     @State private var volume: Double = 20
     @State private var balance: Double = 0
-    @State private var isLeftMuted = false
-    @State private var isRightMuted = false
     
-    let repository = Sliderrepository.shaared
-    let sliders : [Sliders]
-    
-    init(){
-        self.sliders = repository.sliders
-    }
-    
+    @EnvironmentObject var sliderRepository: SliderRepository
+
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
+                SliderView(sliderValue: $volume, sliderName: "Volume", minValue: 0, maxValue: 20, step: 1)
+                SliderView(sliderValue: $balance, sliderName: "Balance", minValue: -4, maxValue: 4, step: 1)
 
-                VStack(alignment: .leading) {
-                    HStack(){
-                        Text("Volume")
-                        Spacer()
-                        Text("\(Int(volume))")
-                    }
-                    Slider(value: $volume, in: 0...40, step: 1)
-                }
-
-                VStack(alignment: .leading) {
-                    HStack(){
-                        Text("Balance")
-                        Spacer()
-                        Text("\(Int(balance))")
-                    }
-                    Slider(value: $balance, in: -4...4, step: 1)
-                }
                 Spacer()
+
                 HStack {
                     Spacer()
                     Image("left_speaker")
@@ -48,29 +27,28 @@ struct FirstPage: View {
                         .frame(width: 150, height: 150)
                     Spacer()
 
-                    Spacer()
                     Image("right_speaker")
                         .resizable()
                         .frame(width: 150, height: 150)
                     Spacer()
                 }
                 Spacer()
-                HStack {
-                    Toggle(isOn: $isLeftMuted) {
-                        Text("Left Speakers")
-                        Text("Mute or unmute")
-                    }
-                    .toggleStyle(SwitchToggleStyle(tint: .red))
 
-                    Toggle(isOn: $isRightMuted) {
-                        Text("Right Speakers")
-                        Text("Mute or unmute")
-                    }
-                    .toggleStyle(SwitchToggleStyle(tint: .red))
+                HStack() {
+                    ToggleView(name: "Left Speaker", isOn: $sliderRepository.isLeftMuted)
+                        .onTapGesture {
+                            sliderRepository.isRightMuted = false
+                            balance = -4
+                        }
+                    ToggleView(name: "Right Speaker", isOn: $sliderRepository.isRightMuted)
+                        .onTapGesture {
+                            sliderRepository.isLeftMuted = false
+                            balance = 4
+                        }
                 }
-                Spacer()
+
                 HStack {
-                    NavigationLink(destination: SpeakerPage(speakerName: "Left")) {
+                    NavigationLink(destination: LeftSpeakerPage(isLeftMuted: $sliderRepository.isLeftMuted)) {
                         Text("Mix")
                     }
                     .frame(minWidth: 0, maxWidth: .infinity)
@@ -79,7 +57,7 @@ struct FirstPage: View {
                     .foregroundColor(.white)
                     .cornerRadius(40)
                     Spacer()
-                    NavigationLink(destination: SpeakerPage(speakerName: "Right")) {
+                    NavigationLink(destination: SpeakerPage(isRightMuted: $sliderRepository.isRightMuted)) {
                         Text("Mix")
                     }
                     .frame(minWidth: 0, maxWidth: .infinity)
@@ -90,24 +68,40 @@ struct FirstPage: View {
                 }
             }
             .padding()
-            .navigationBarTitle("Settings", displayMode: .automatic)
         }
-        .onChange(of: isLeftMuted) { newValue in
+        .navigationTitle("Settings")
+        
+        .onChange(of: sliderRepository.isLeftMuted) { newValue in
             if newValue {
-                balance = -4
+                if sliderRepository.isRightMuted {
+                    // Les deux enceintes sont activées, balance à 0
+                    balance = 0
+                } else {
+                    balance = -4
+                }
             } else {
-                balance = isRightMuted ? 4 : 0
+                // La gauche n'est pas activée, vérifie l'état de la droite
+                if !sliderRepository.isRightMuted {
+                    balance = 0
+                }
             }
         }
-        .onChange(of: isRightMuted) { newValue in
+
+        .onChange(of: sliderRepository.isRightMuted) { newValue in
             if newValue {
-                balance = 4
-            } else if (!newValue) {
-                balance = isLeftMuted ? -4 : 0
-            }
-            else{
-                balance = isRightMuted ? 4 : 0
+                if sliderRepository.isLeftMuted {
+                    // Les deux enceintes sont activées, balance à 0
+                    balance = 0
+                } else {
+                    balance = 4
+                }
+            } else {
+                // La droite n'est pas activée, vérifie l'état de la gauche
+                if !sliderRepository.isLeftMuted {
+                    balance = 0
+                }
             }
         }
+
     }
 }

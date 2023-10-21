@@ -5,49 +5,51 @@
 //  Created by TOURE Alkaya Sidi on 07/10/2023.
 //
 import SwiftUI
-
 struct SpeakerPage: View {
-    @State private var isMuted = false
-    @State private var bassVolume: Double = 0
-    @State private var midVolume: Double = 0
-    @State private var trebleVolume: Double = 0
+    @EnvironmentObject var sliderRepository: SliderRepository
+    @Binding var isRightMuted: Bool
 
-    var speakerName: String
+    init(isRightMuted: Binding<Bool>) {
+        _isRightMuted = isRightMuted
+    }
 
     var body: some View {
-        VStack(alignment: .leading){
-            Text("\(speakerName) Speaker")
-                .font(.largeTitle)
-            
-            Toggle(isOn: $isMuted) {
-                Text("Speaker on")
-                Text("Mute or unmute")
-            }
-            .toggleStyle(SwitchToggleStyle(tint: .green))
-            
-            HStack(){
-                Text("Bass")
-                Spacer()
-                Text("\(Int(bassVolume))")
-            }
-            Slider(value: $bassVolume, in: -15...15, step: 1)
+        NavigationView {
+            VStack(alignment: .leading) {
+                Toggle(isOn: $isRightMuted) {
+                    Text("Speaker on")
+                    Text("Mute or unmute")
+                }
+                .toggleStyle(SwitchToggleStyle(tint: .green))
 
-            HStack(){
-                Text("Mid")
+                SliderView(
+                    sliderValue: $sliderRepository.rightBassVolume,
+                    sliderName: "BassVolume",
+                    minValue: -15,
+                    maxValue: 15,
+                    step: 5
+                )
+
+                SliderView(
+                    sliderValue: $sliderRepository.rightMidVolume,
+                    sliderName: "MidVolume",
+                    minValue: -15,
+                    maxValue: 15,
+                    step: 5
+                )
+
+                SliderView(
+                    sliderValue: $sliderRepository.rightTrebleVolume,
+                    sliderName: "TrebleVolume",
+                    minValue: -15,
+                    maxValue: 15,
+                    step: 5
+                )
+
                 Spacer()
-                Text("\(Int(midVolume))")
             }
-            Slider(value: $midVolume, in: -15...15, step: 1)
-            
-            HStack(){
-                Text("Treble")
-                Spacer()
-                Text("\(Int(trebleVolume))")
-            }
-            Slider(value: $trebleVolume, in: -15...15, step: 1)
-            
-            Spacer()
+            .padding()
         }
-        .padding()
+        .navigationBarTitle("Right Speaker")
     }
 }

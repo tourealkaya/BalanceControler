@@ -7,12 +7,16 @@
 
 import SwiftUI
 
-
 @main
 struct BalanceControlerApp: App {
+    @StateObject var repository = SliderRepository.shared
+
     var body: some Scene {
         WindowGroup {
-            FirstPage()
+            NavigationStack {
+                FirstPage()
+            }
+            .environmentObject(repository)
         }
     }
 }

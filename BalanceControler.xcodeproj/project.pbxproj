@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DBD1D9E72AD3EF2F00406C9D /* Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD1D9E62AD3EF2F00406C9D /* Slider.swift */; };
-		DBD1D9E92AD3EF9C00406C9D /* SliderRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD1D9E82AD3EF9C00406C9D /* SliderRepository.swift */; };
-		DBD1D9F12AD3F13800406C9D /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD1D9F02AD3F13800406C9D /* SliderView.swift */; };
+		DB34E3CF2AD5B642007B3E00 /* MySlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB34E3CE2AD5B642007B3E00 /* MySlider.swift */; };
+		DB34E3D22AD5B6B7007B3E00 /* SliderRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB34E3D12AD5B6B7007B3E00 /* SliderRepository.swift */; };
+		DB34E3D42AD5B7C1007B3E00 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB34E3D32AD5B7C1007B3E00 /* SliderView.swift */; };
+		DB34E3D62AD5C26D007B3E00 /* ToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB34E3D52AD5C26D007B3E00 /* ToggleView.swift */; };
+		DB34E3D92AD5C46C007B3E00 /* ButtonMixView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB34E3D82AD5C46C007B3E00 /* ButtonMixView.swift */; };
+		DBA1CC5F2AD75EC700267F25 /* LeftSpeakerPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA1CC5E2AD75EC700267F25 /* LeftSpeakerPage.swift */; };
 		DBD2B6B92AD04C400020E2DF /* BalanceControlerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD2B6B82AD04C400020E2DF /* BalanceControlerApp.swift */; };
 		DBD2B6BB2AD04C400020E2DF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD2B6BA2AD04C400020E2DF /* ContentView.swift */; };
 		DBD2B6BD2AD04C410020E2DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBD2B6BC2AD04C410020E2DF /* Assets.xcassets */; };
@@ -39,9 +42,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		DBD1D9E62AD3EF2F00406C9D /* Slider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slider.swift; sourceTree = "<group>"; };
-		DBD1D9E82AD3EF9C00406C9D /* SliderRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderRepository.swift; sourceTree = "<group>"; };
-		DBD1D9F02AD3F13800406C9D /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
+		DB34E3CE2AD5B642007B3E00 /* MySlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySlider.swift; sourceTree = "<group>"; };
+		DB34E3D12AD5B6B7007B3E00 /* SliderRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderRepository.swift; sourceTree = "<group>"; };
+		DB34E3D32AD5B7C1007B3E00 /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
+		DB34E3D52AD5C26D007B3E00 /* ToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleView.swift; sourceTree = "<group>"; };
+		DB34E3D82AD5C46C007B3E00 /* ButtonMixView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonMixView.swift; sourceTree = "<group>"; };
+		DBA1CC5E2AD75EC700267F25 /* LeftSpeakerPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftSpeakerPage.swift; sourceTree = "<group>"; };
 		DBD2B6B52AD04C400020E2DF /* BalanceControler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BalanceControler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBD2B6B82AD04C400020E2DF /* BalanceControlerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceControlerApp.swift; sourceTree = "<group>"; };
 		DBD2B6BA2AD04C400020E2DF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -81,20 +87,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		DBD1D9E42AD3EF0500406C9D /* data */ = {
+		DB34E3CD2AD5B61C007B3E00 /* data */ = {
 			isa = PBXGroup;
 			children = (
-				DBD1D9E62AD3EF2F00406C9D /* Slider.swift */,
+				DB34E3CE2AD5B642007B3E00 /* MySlider.swift */,
 			);
 			path = data;
 			sourceTree = "<group>";
 		};
-		DBD1D9E52AD3EF0D00406C9D /* repository */ = {
+		DB34E3D02AD5B696007B3E00 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				DBD1D9E82AD3EF9C00406C9D /* SliderRepository.swift */,
+				DB34E3D12AD5B6B7007B3E00 /* SliderRepository.swift */,
 			);
-			path = repository;
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		DBD2B6AC2AD04C400020E2DF = {
@@ -120,8 +126,8 @@
 		DBD2B6B72AD04C400020E2DF /* BalanceControler */ = {
 			isa = PBXGroup;
 			children = (
-				DBD1D9E42AD3EF0500406C9D /* data */,
-				DBD1D9E52AD3EF0D00406C9D /* repository */,
+				DB34E3D02AD5B696007B3E00 /* Repository */,
+				DB34E3CD2AD5B61C007B3E00 /* data */,
 				DBF36E142AD0BFEF002149E2 /* view */,
 				DBD2B6B82AD04C400020E2DF /* BalanceControlerApp.swift */,
 				DBD2B6BA2AD04C400020E2DF /* ContentView.swift */,
@@ -161,7 +167,10 @@
 			children = (
 				DBF36E152AD0C030002149E2 /* FirstPage.swift */,
 				DBF36E172AD0E232002149E2 /* SpeakerPage.swift */,
-				DBD1D9F02AD3F13800406C9D /* SliderView.swift */,
+				DB34E3D32AD5B7C1007B3E00 /* SliderView.swift */,
+				DB34E3D82AD5C46C007B3E00 /* ButtonMixView.swift */,
+				DB34E3D52AD5C26D007B3E00 /* ToggleView.swift */,
+				DBA1CC5E2AD75EC700267F25 /* LeftSpeakerPage.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -296,13 +305,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DBD1D9E92AD3EF9C00406C9D /* SliderRepository.swift in Sources */,
+				DB34E3D62AD5C26D007B3E00 /* ToggleView.swift in Sources */,
+				DB34E3D22AD5B6B7007B3E00 /* SliderRepository.swift in Sources */,
 				DBF36E182AD0E232002149E2 /* SpeakerPage.swift in Sources */,
+				DBA1CC5F2AD75EC700267F25 /* LeftSpeakerPage.swift in Sources */,
 				DBD2B6BB2AD04C400020E2DF /* ContentView.swift in Sources */,
 				DBD2B6B92AD04C400020E2DF /* BalanceControlerApp.swift in Sources */,
 				DBF36E162AD0C030002149E2 /* FirstPage.swift in Sources */,
-				DBD1D9E72AD3EF2F00406C9D /* Slider.swift in Sources */,
-				DBD1D9F12AD3F13800406C9D /* SliderView.swift in Sources */,
+				DB34E3CF2AD5B642007B3E00 /* MySlider.swift in Sources */,
+				DB34E3D92AD5C46C007B3E00 /* ButtonMixView.swift in Sources */,
+				DB34E3D42AD5B7C1007B3E00 /* SliderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

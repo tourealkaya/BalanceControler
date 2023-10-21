@@ -6,7 +6,9 @@
 //
 
 import Foundation
-struct MySliser {
-    var name: String 
+
+struct MySlider: Identifiable {
+    let id = UUID()
+    var name: String
     var value: Int
 }
